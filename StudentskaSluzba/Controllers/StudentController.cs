@@ -41,42 +41,57 @@ namespace StudentskaSluzba.Controllers
                 ModelState.AddModelError("Grad", "Unesite Grad");
                 rezultat = false;
             }
-            foreach (char item in student.Ime)
+            if (student.Ime != null)
             {
-                if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                foreach (char item in student.Ime)
                 {
-                    ModelState.AddModelError("Ime", "Ime ne može da sadrži broj ili znak.");
-                    rezultat = false;
+                    if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                    {
+                        ModelState.AddModelError("Ime", "Ime ne može da sadrži broj ili znak.");
+                        rezultat = false;
+                    }
                 }
             }
-            foreach (char item in student.Prezime)
+            if (student.Prezime != null)
             {
-                if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                foreach (char item in student.Prezime)
                 {
-                    ModelState.AddModelError("Prezime", "Prezime ne može da sadrži broj ili znak.");
-                    rezultat = false;
+                    if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                    {
+                        ModelState.AddModelError("Prezime", "Prezime ne može da sadrži broj ili znak.");
+                        rezultat = false;
+                    }
                 }
             }
-            foreach (char item in student.Adresa)
+            if (student.Adresa != null)
             {
-                if (Char.IsPunctuation(item))
+                foreach (char item in student.Adresa)
                 {
-                    ModelState.AddModelError("Adresa", "Adresa ne može da sadrži znak.");
-                    rezultat = false;
+                    if (Char.IsPunctuation(item))
+                    {
+                        ModelState.AddModelError("Adresa", "Adresa ne može da sadrži znak.");
+                        rezultat = false;
+                    }
                 }
             }
-            foreach (char item in student.Grad)
+            if (student.Grad != null)
             {
-                if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                foreach (char item in student.Grad)
                 {
-                    ModelState.AddModelError("Grad", "Grad ne može da sadrži broj ili znak.");
-                    rezultat = false;
+                    if (Char.IsDigit(item) || Char.IsPunctuation(item))
+                    {
+                        ModelState.AddModelError("Grad", "Grad ne može da sadrži broj ili znak.");
+                        rezultat = false;
+                    }
                 }
             }
-            if (student.Ime == student.Prezime)
+            if (student.Prezime != null && student.Prezime != null)
             {
-                ModelState.AddModelError("Prezime", "Prezime studenta ne može biti isto kao i ime studenta.");
-                rezultat = false;
+                if (student.Ime == student.Prezime)
+                {
+                    ModelState.AddModelError("Prezime", "Prezime studenta ne može biti isto kao i ime studenta.");
+                    rezultat = false;
+                }
             }
 
             return rezultat;
