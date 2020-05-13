@@ -1,0 +1,46 @@
+﻿@model StudentskaSluzba.Models.Ispit
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="title">Izbrišite ispit</h2>
+<h3>Jeste li sigurni da želite da izbrišete ispit?</h3>
+<h4>Ispit</h4>
+<hr />
+<div class="table-responsive">
+    <table class="table table-dark table-striped table-bordered m-0">
+        <thead>
+            <tr>
+                <th class="index">BI</th>
+                <th>Šifra predmeta</th>
+                <th class="marks">Ocena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="index">
+                    @Html.DisplayFor(model => model.BI)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PredmetId)
+                </td>
+                <td class="marks">
+                    @Html.DisplayFor(model => model.Ocena)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <input type="submit" value="Obriši" class="btn delete-button" />
+        <a href="@Url.Action("Index", "Student")" class="back-button" title="Back to list">
+            <i class="fas fa-arrow-circle-left"></i>
+        </a>
+    </div>
+}
+

@@ -1,0 +1,50 @@
+﻿@model StudentskaSluzba.Models.Student
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Kreiraj novog studenta</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <form>
+        <h4>Student</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(model => model.Ime, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Ime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ime, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(model => model.Prezime, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Prezime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prezime, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(model => model.Adresa, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Adresa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adresa, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3 form-group">
+                @Html.LabelFor(model => model.Grad, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Grad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Grad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <input type="submit" value="Kreiraj" class="btn save-button" />
+            <a href="@Url.Action("Index", "Student")" class="back-button" title="Back to list">
+                <i class="fas fa-arrow-circle-left"></i>
+            </a>
+        </div>
+    </form>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

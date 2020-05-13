@@ -1,0 +1,81 @@
+﻿@model IEnumerable<StudentskaSluzba.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="title">Lista studenata</h2>
+@Html.ActionLink("Kreiraj novog studenta", "Create", new object { },
+    new { @class="link" })
+<div class="table-responsive">
+    <table class="table table-dark table-striped table-bordered m-0">
+        <thead>
+            <tr>
+                <th class="index">
+                    BI
+                </th>
+                <th class="name">
+                    Ime i prezime
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grad)
+                </th>
+                <th class="options">
+                    Opcije
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(model => item.BI)
+                    </td>
+                    <td>
+                        <a class="link-name" data-toggle="collapse" href="#ucenik-@item.BI.ToString()" role="button" aria-expanded="false" aria-controls="ucenik-@item.BI.ToString()">
+                            @item.Ime @item.Prezime
+                        </a>
+                        <div class="collapse" id="ucenik-@item.BI.ToString()">
+                            <div class="py-3">
+                                <table class="table table-dark m-0">
+                                    @foreach (var it in item.Ispiti)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => it.Predmet.NazivPredmeta)
+                                            </td>
+                                            <td class="marks text-center">
+                                                @Html.DisplayFor(modelItem => it.Ocena)
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grad)
+                    </td>
+                    <td class="options-flex">                        
+                        <a href="@Url.Action("Edit", "Student", new { id = item.BI })">
+                            <i class="fas fa-pencil-alt edit"></i>
+                        </a>
+                        <a href="@Url.Action("Details", "Student", new { id = item.BI })">
+                            <i class="fas fa-eye details"></i>
+                        </a>
+                        <a href="@Url.Action("Delete", "Student", new { id = item.BI })">
+                            <i class="fas fa-trash-alt delete"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

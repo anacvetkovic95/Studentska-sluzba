@@ -1,0 +1,66 @@
+﻿@model StudentskaSluzba.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2 class="title">Detalji o studentu i njegovim ispitima</h2>
+<h3>Student</h3>
+<hr />      
+<div class="table-responsive mb-5">
+    <table class="table table-dark table-striped table-bordered m-0">
+        <thead>
+            <tr>
+                <th class="index">BI</th>
+                <th>Ime i prezime</th>
+                <th>Adresa</th>
+                <th>Grad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="index">
+                    @Html.DisplayFor(model => model.BI)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Ime)
+                    @Html.DisplayFor(model => model.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Adresa)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Grad)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h4>Lista ispita:</h4>
+<div class="table-responsive">
+    <table class="table table-dark table-striped table-bordered m-0">
+        <thead>
+            <tr>
+                <th>Naziv predmeta</th>
+                <th class="marks">Ocena</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Ispiti)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Predmet.NazivPredmeta)
+                </td>
+                <td class="marks">
+                    @Html.DisplayFor(modelItem => item.Ocena)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-end mt-4">
+    <a href="@Url.Action("Index", "Student")" class="back-button" title="Back to list">
+        <i class="fas fa-arrow-circle-left"></i>
+    </a>
+</div>

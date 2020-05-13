@@ -1,0 +1,42 @@
+﻿@model StudentskaSluzba.Models.Ispit
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2 class="title">Detalji ispita</h2>
+<h4>Ispit</h4>
+<hr />
+<div class="table-responsive">
+    <table class="table table-dark table-striped table-bordered m-0">
+        <thead>
+        <tr>
+            <th class="index">BI</th>
+            <th>Ime i prezime</th>
+            <th>Naziv predmeta</th>
+            <th class="text-center marks">Ocena</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="index">
+                    @Html.DisplayFor(model => model.BI)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Student.Ime)
+                    @Html.DisplayFor(model => model.Student.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Predmet.NazivPredmeta)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(model => model.Ocena)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-end mt-4">
+    <a href="@Url.Action("Index", "Ispit")" class="back-button" title="Back to list">
+        <i class="fas fa-arrow-circle-left"></i>
+    </a>
+</div>

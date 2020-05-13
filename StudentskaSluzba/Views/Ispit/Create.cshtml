@@ -1,0 +1,43 @@
+﻿@model StudentskaSluzba.Models.Ispit
+@using StudentskaSluzba.Models
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="title">Kreiraj novi ispit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<h4>Ispit</h4>
+<hr />
+<form>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-md-4 form-group">
+            @Html.LabelFor(model => model.BI, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.BI, new SelectList(ViewBag.indeksi))
+            @Html.ValidationMessageFor(model => model.BI, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4 form-group text-md-center">
+            @Html.LabelFor(model => model.PredmetId, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.PredmetId, new SelectList(ViewBag.sifre))
+            @Html.ValidationMessageFor(model => model.PredmetId, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-4 form-group text-md-right">
+            @Html.LabelFor(model => model.Ocena, htmlAttributes: new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.Ocena, new SelectList(ViewBag.ocene))
+            @Html.ValidationMessageFor(model => model.Ocena, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+        <input type="submit" value="Sačuvaj" class="btn save-button" />
+        <a href="@Url.Action("Index", "Ispit")" class="back-button" title="Back to list">
+            <i class="fas fa-arrow-circle-left"></i>
+        </a>
+    </div>
+</form>
+}
+

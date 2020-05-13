@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title | Studentska sluzba</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/style.css")
+</head>
+<body>
+    <section class="background">
+        <img src="~/Content/background.jpg" alt="~/Content/background.jpg" />
+    </section>
+    <div class="container py-5">
+        <div class="content">
+            @RenderBody()
+            <hr />
+            <footer class="footer">
+                <p class="paragraph">
+                    &copy; @DateTime.Now.Year - Studentska sluzba
+                </p>
+                @Html.ActionLink("Glavni meni", "Index", "Home", new object { },
+            new { @class = "button" })
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

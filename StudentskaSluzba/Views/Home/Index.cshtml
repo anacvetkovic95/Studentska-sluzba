@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Glavni meni";
+}
+
+<h1 class="heading">Dobrodošli!</h1>
+<h2 class="title">IS Studentska služba</h2>
+
+<div class="row">
+    <div class="col-md-6 mb-3 mb-md-0">
+        <div class="item">
+            @Html.ActionLink("Lista studenata", "Index", "Student", new object { },
+            new {@class = "link"})
+            <p class="paragraph">
+                U okviru ovog podmenija, moguće je vršiti ažuriranje podataka o studentima. U opticaju su: unos, izmena, brisanje i prikazivanje podataka o studenatima.
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="item">
+            @Html.ActionLink("Lista ispita", "Index", "Ispit", new object { },
+            new { @class = "link" })
+            <p class="paragraph">
+                U okviru ovog podmenija, moguće je vršiti ažuriranje podataka o ispitima. U opticaju su: unos, izmena, brisanje i prikazivanje podataka o ispitima.
+            </p>
+        </div>
+    </div>
+</div>
